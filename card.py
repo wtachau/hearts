@@ -240,7 +240,9 @@ class Player:
 			if len(eligibleCards) == 0: # if you don't have any of the led suit
 				eligibleCards = self.hand
 
-		# if only one option, play it. Otherwise... choose randomly (for now)
+		# At this point the eligible cards to choose from are set
+
+		# If only one option, play it. Otherwise... choose randomly (for now)
 		if len(eligibleCards) == 1:
 			cardToPlay = eligibleCards[0]
 		else:
@@ -250,7 +252,12 @@ class Player:
 			cardToPlay = choice(eligibleCards)
 
 		# "remember" it to learn from later
-		self.moves.append({"trick": cardsToStringList(trickSoFar), "game state": gameState.getDict(), "hand":cardsToStringList(self.hand), "choice":str(cardToPlay)})
+		self.moves.append({
+			"trick": cardsToStringList(trickSoFar), 
+			"game state": gameState.getDict(), 
+			"hand":cardsToStringList(self.hand), 
+			"choice":str(cardToPlay)
+			})
 
 		# remove it from hand, and play it
 		self.hand.remove(cardToPlay)
@@ -400,7 +407,7 @@ class HeartsGame:
 		return winner
 
 
-printOn = True
+printOn = False
 numRounds = 100
 
 playerNorth = Player("North")
