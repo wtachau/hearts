@@ -1,0 +1,4 @@
+cpickletest
+a
+p0
+.
